@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="450.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" scaleY="2.0">
+         <image>
+            <Image url="@../images/background2.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#4e4e4e" layoutX="203.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FUML">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#4e4e4e" layoutX="89.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fully Automated Unified (Java) Modeling Language" />
+      <Text fill="#4e4e4e" layoutX="50.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home :" />
+      <Text fill="#4e4e4e" layoutX="68.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; View Diagrams" />
+      <Text fill="#4e4e4e" layoutX="63.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; Create Diagrams" />
+      <Text fill="#4e4e4e" layoutX="68.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; menu Items :" />
+      <Text fill="#4e4e4e" layoutX="94.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File -&gt; upload code (displays create diagrams page)" />
+      <Text fill="#4e4e4e" layoutX="94.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit -&gt; edit UMLS (displays view diagram page)" />
+      <Text fill="#4e4e4e" layoutX="94.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help -&gt; resources (return user to home page)" />
+      <Text fill="#4e4e4e" layoutX="110.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; menu items :" />
+      <Text fill="#4e4e4e" layoutX="141.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="return -&gt; home (return user to home page)" />
+      <Text fill="#4e4e4e" layoutX="141.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="help -&gt; resources (opens Help pop up with information)" />
+      <Text fill="#4e4e4e" layoutX="105.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; upload (allows user to upload files from inventory)" />
+      <Text fill="#4e4e4e" layoutX="105.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; generate (generates UML from uploaded files)" />
+      <Text fill="#4e4e4e" layoutX="110.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; menu items :" />
+      <Text fill="#4e4e4e" layoutX="143.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="help -&gt; resources (open Help pop up with information)" />
+      <Text fill="#4e4e4e" layoutX="141.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="return -&gt; home (return user to home page)" />
+      <Text fill="#4e4e4e" layoutX="116.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; edit (edits UML to the users preference)" />
+      <Text fill="#4e4e4e" layoutX="115.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt; delete (deleted unwanted UMLs)" />
+   </children>
+</AnchorPane>
