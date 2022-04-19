@@ -78,7 +78,7 @@ public class createDiagramController {
     void uploadFile(ActionEvent event) throws IOException{
     	
         FileChooser fc = new FileChooser();
-        fc.setTitle("Open Resource File");
+        fc.setTitle("Open Java Files");
       
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
         fc.getExtensionFilters().add(extFilter);
