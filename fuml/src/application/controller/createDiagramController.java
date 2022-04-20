@@ -1,12 +1,10 @@
 package application.controller;
 
 import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,29 +37,20 @@ public class createDiagramController {
     	window.setScene(scene);
         window.show();
     }
-    
+
+
+
     @FXML
     //write the list to list.txt...will pass to functions in model later
     void Generate(ActionEvent event) throws IOException{
         ArrayList<String> fileList = new ArrayList<String>(); 
         for(int i = 0; i < listedFile.getItems().size(); i++){
               fileList.add(listedFile.getItems().get(i));
-        }
-        File file = new File("src/list.txt");
-       
-        for(int i = 0; i < fileList.size(); i++){
-            try {
-                java.io.FileWriter fw = new java.io.FileWriter(file, true);
-                fw.write(fileList.get(i) + "\n");
-                fw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+              
+          }
+      }
 
-    }
-
-    
+ 
 
     // returns user to home page
     @FXML
