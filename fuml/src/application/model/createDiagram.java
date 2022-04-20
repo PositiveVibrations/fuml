@@ -9,17 +9,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class createDiagram {
 
-	public static void create(String fileName) {
+	public static void create(String fileName){
+
 	    File file = new File(fileName);
 	    BufferedReader reader;
 	    try {
 	        reader = new BufferedReader(new FileReader(fileName));
 	        String line = reader.readLine();
 	        while (line != null) {
-	            //if the line contains the word "String" print it
-	            if (line.contains("String")) {
+	           
+	            if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 	                System.out.println(line);
-	            }
+	                }
 	            line = reader.readLine();
 	        }
 	        reader.close();
@@ -28,3 +29,4 @@ public class createDiagram {
 	    }
 	}
 }
+	
