@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import application.model.createDiagram;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,13 +42,13 @@ public class createDiagramController {
 
 
     @FXML
-    //write the list to list.txt...will pass to functions in model later
+    //will pass to functions in model later
     void Generate(ActionEvent event) throws IOException{
         ArrayList<String> fileList = new ArrayList<String>(); 
         for(int i = 0; i < listedFile.getItems().size(); i++){
               fileList.add(listedFile.getItems().get(i));
-              
-          }
+              createDiagram.create(listedFile.getItems().get(i));
+        }
       }
 
  
@@ -74,7 +75,7 @@ public class createDiagramController {
       
         File file = fc.showOpenDialog(null);
    
-        listedFile.getItems().add(file.getPath()+file.getName());
+        listedFile.getItems().add(file.getPath());
 
         }
 }
