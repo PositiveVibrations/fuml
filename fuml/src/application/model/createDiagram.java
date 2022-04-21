@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class createDiagram {
-//create an array list for methods and variables
 
 
 	public static void create(String fileName){
+		//Arrays
         ArrayList<String> methods = new ArrayList<String>();
         ArrayList<String> variables = new ArrayList<String>();
 	   File file = new File(fileName);
