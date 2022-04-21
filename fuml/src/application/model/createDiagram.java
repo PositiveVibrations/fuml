@@ -23,11 +23,13 @@ public class createDiagram {
 	            //if the line contain public private or protected
 	            if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 	            	if(line.contains("(")) {
-	            		line = line.replaceAll("[^\\[public\\|private\\|protected\\] String \\[A-Za-z()\\]*]", "");
-                        //add line to the array list
-                            methods.add(line);
-
-                     
+	            		Pattern pattern = Pattern.compile(".*(public [void|String]+ [A-Za-z( ]*\\)).*");
+	            		//next going to be using this system to extract to correct UML format text from arraylist
+	            		Matcher matcher = pattern.matcher(line);
+	            		if (matcher.find())
+	            		{
+	            			methods.add(matcher.group(1));
+	            		}
 	            	}
 	            	//else if
                 else if(line.contains("String")) {                                               
