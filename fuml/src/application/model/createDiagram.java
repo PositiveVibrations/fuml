@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class createDiagram {
 
-
+boolean i;
 	public static void create(String fileName){
 		//Arrays
         ArrayList<String> methods = new ArrayList<String>();
@@ -37,7 +37,7 @@ public class createDiagram {
 	            		
 	            	}
 	            	//else if
-                else if(line.contains("int") || line.contains("String")||line.contains("Boolean")||line.contains("integer")||line.contains("double")||line.contains("float")) {                                               
+                else if(line.contains("int") || line.contains("String")||line.contains("Boolean")||line.contains("boolean")||line.contains("integer")||line.contains("double")||line.contains("float")) {                                               
 	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[String\\|int\\|Boolean\\|boolean\\|integer\\|double\\|float\\] \\[A-Za-z\\]*]", "");
                     	variables.add(line);
 	                }
