@@ -38,7 +38,7 @@ public class createDiagram {
 	            	}
 	            	//else if
                 else if(line.contains("int") || line.contains("String")||line.contains("Boolean")||line.contains("integer")||line.contains("double")||line.contains("float")) {                                               
-	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[String\\|int\\|Boolean\\|boolean\\|integer\\|double|float\\] \\[A-Za-z\\]*]", "");
+	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[String\\|int\\|Boolean\\|boolean\\|integer\\|double\\|float\\] \\[A-Za-z\\]*]", "");
                     	variables.add(line);
 	                }
 
