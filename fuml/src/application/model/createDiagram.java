@@ -20,20 +20,25 @@ public class createDiagram {
 	        reader = new BufferedReader(new FileReader(fileName));
 	        String line = reader.readLine();
 	        while (line != null) {
+				//remove extra spaces between words
+				line = line.replaceAll("\\s+", " ");
 	            //if the line contain public private or protected
 	            if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 	            	if(line.contains("(")) {
-	            		Pattern pattern = Pattern.compile(".*(public [void|String]+ [A-Za-z( ]*\\)).*");
+	            		line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[A-Za-z<>()]*", "");
+                    	methods.add(line);
+	            		//Pattern pattern = Pattern.compile(".*(public [void|String]+ [A-Za-z( ]*\\)).*");
 	            		//next going to be using this system to extract to correct UML format text from arraylist
-	            		Matcher matcher = pattern.matcher(line);
-	            		if (matcher.find())
-	            		{
-	            			methods.add(matcher.group(1));
-	            		}
+	            		//Matcher matcher = pattern.matcher(line);
+	            		//if (matcher.find())
+	            		//{
+	            			//methods.add(matcher.group(1));
+	            	//}
+	            		
 	            	}
 	            	//else if
-                else if(line.contains("String")) {                                               
-	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] String \\[A-Za-z\\]*]", "");
+                else if(line.contains("int") || line.contains("String")||line.contains("Boolean")||line.contains("integer")||line.contains("double")||line.contains("float")) {                                               
+	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[String\\|int\\|Boolean\\|boolean\\|integer\\|double|float\\] \\[A-Za-z\\]*]", "");
                     	variables.add(line);
 	                }
 
@@ -51,10 +56,10 @@ public class createDiagram {
             for(int i = 0; i < methods.size(); i++) {
                 System.out.println(methods.get(i));
             }
-                                } catch (IOException e) {                                   
+               } catch (IOException e) {                                   
 
-                                                    e.printStackTrace();                                    
-                                                }
+              e.printStackTrace();                                    
+         }
 
-                                                        }                               
+    }                               
 }
