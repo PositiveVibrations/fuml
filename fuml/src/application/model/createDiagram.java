@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class createDiagram {
 
-boolean i;
+
 	public static void create(String fileName){
 		//Arrays
         ArrayList<String> methods = new ArrayList<String>();
