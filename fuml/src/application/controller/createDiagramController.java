@@ -66,7 +66,8 @@ public class createDiagramController {
 
     @FXML
     void uploadFile(ActionEvent event) throws IOException{
-    	
+    	//if no file is selected then exist without error
+		
         FileChooser fc = new FileChooser();
         fc.setTitle("Open Java Files");
       
@@ -74,8 +75,10 @@ public class createDiagramController {
         fc.getExtensionFilters().add(extFilter);
       
         File file = fc.showOpenDialog(null);
-   
+        if(file != null){
         listedFile.getItems().add(file.getPath());
 
         }
+    }
+
 }

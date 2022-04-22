@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class createDiagram {
 
 
-	public static void create(String fileName){
+public static void create(String fileName){
 		//Arrays
         ArrayList<String> methods = new ArrayList<String>();
         ArrayList<String> variables = new ArrayList<String>();
@@ -26,20 +26,47 @@ public class createDiagram {
 	            if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 	            	if(line.contains("(")) {
 	            		line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[A-Za-z<>()]*", "");
-                    	methods.add(line);
-	            		//Pattern pattern = Pattern.compile(".*(public [void|String]+ [A-Za-z( ]*\\)).*");
-	            		//next going to be using this system to extract to correct UML format text from arraylist
-	            		//Matcher matcher = pattern.matcher(line);
-	            		//if (matcher.find())
-	            		//{
-	            			//methods.add(matcher.group(1));
-	            	//}
-	            		
-	            	}
-	            	//else if
+
+						String[] words = line.split(" ");
+						
+						if(words[1].equals("public")) {
+							words[1] = "+";
+						}
+						else if(words[1].equals("private")) {
+							words[1] = "-";
+						}
+						else if(words[1].equals("protected")) {
+							words[1] = "*";
+						}
+						
+						if(words[3].contains(")")) {
+							words[3]=words[3];
+						}
+						else {
+							int i=3;
+							
+							while(!words[3].contains(")")) {
+								
+								words[3] +=words[i];
+								i++;
+							}
+
+					line = words[1] + " " +  words[3]+": " +words[2];
+				
+					methods.add(line);
+						}
+					}
                 else if(line.contains("int") || line.contains("String")||line.contains("Boolean")||line.contains("boolean")||line.contains("integer")||line.contains("double")||line.contains("float")) {                                               
 	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[String\\|int\\|Boolean\\|boolean\\|integer\\|double\\|float\\] \\[A-Za-z\\]*]", "");
-                    	variables.add(line);
+				
+					line = line.replaceAll("public", "+");
+					line = line.replaceAll("private", "-");
+					line = line.replaceAll("protected", "*");
+					
+					String[] words = line.split(" ");
+				
+					line = words[1] + " " +  words[3]+": " +words[2];
+                    variables.add(line);
 	                }
 
 	            }
@@ -61,5 +88,5 @@ public class createDiagram {
               e.printStackTrace();                                    
          }
 
-    }                               
-}
+    } 
+	}
