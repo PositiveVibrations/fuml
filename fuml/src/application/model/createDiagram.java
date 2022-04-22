@@ -30,7 +30,7 @@ public static void create(String fileName){
 						line = line.replaceAll("private", "-");
 						line = line.replaceAll("protected", "*");
 						line = line.replaceAll("throws IOException", "");
-						
+						line = line.replaceAll("throws FileNotFoundException IOException","");
 						String[] words = line.split(" ");
 						if(words.length > 4) {
 							for (int i = 4; i < words.length; i++) {
