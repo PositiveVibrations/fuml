@@ -44,10 +44,21 @@ public class createDiagramController {
     @FXML
     //will pass to functions in model later
     void Generate(ActionEvent event) throws IOException{
+        ArrayList<String> methods = new ArrayList<String>();
+		ArrayList<String> variables = new ArrayList<String>();
         ArrayList<String> fileList = new ArrayList<String>(); 
         for(int i = 0; i < listedFile.getItems().size(); i++){
               fileList.add(listedFile.getItems().get(i));
-              createDiagram.create(listedFile.getItems().get(i));
+            //this is the variables arrayList...set it to print for now, use it how you want.
+             variables = createDiagram.variables(listedFile.getItems().get(i));
+        	 for(int j = 0; j < variables.size(); j++) {
+				 System.out.println(variables.get(j));
+        	 }
+        	 //this is the methods arrayList...set it to print for now, use it how you want.
+        	 methods = createDiagram.methods(listedFile.getItems().get(i));
+        	 for(int j = 0; j < methods.size(); j++) {
+				 System.out.println(methods.get(j));
+        	 }
         }
       }
 
