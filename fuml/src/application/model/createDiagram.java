@@ -26,35 +26,19 @@ public static void create(String fileName){
 	            if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 	            	if(line.contains("(")) {
 	            		line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[A-Za-z<>()]*", "");
-
+						line = line.replaceAll("public", "+");
+						line = line.replaceAll("private", "-");
+						line = line.replaceAll("protected", "*");
+						line = line.replaceAll("throws IOException", "");
+						
 						String[] words = line.split(" ");
-						
-						if(words[1].equals("public")) {
-							words[1] = "+";
-						}
-						else if(words[1].equals("private")) {
-							words[1] = "-";
-						}
-						else if(words[1].equals("protected")) {
-							words[1] = "*";
-						}
-						
-						if(words[3].contains(")")) {
-							words[3]=words[3];
-						}
-						else {
-							int i=3;
-							
-							while(!words[3].contains(")")) {
-								
-								words[3] +=words[i];
-								i++;
+						if(words.length > 4) {
+							for (int i = 4; i < words.length; i++) {
+								words[3] = words[3] + " " + words[i];
 							}
-
-					line = words[1] + " " +  words[3]+": " +words[2];
-				
-					methods.add(line);
 						}
+						line=words[1] + " " + words[3] + ": " + words[2];
+						methods.add(line);
 					}
                 else if(line.contains("int") || line.contains("String")||line.contains("Boolean")||line.contains("boolean")||line.contains("integer")||line.contains("double")||line.contains("float")) {                                               
 	            	line = line.replaceAll("[^\\[public\\|private\\|protected\\] \\[String\\|int\\|Boolean\\|boolean\\|integer\\|double\\|float\\] \\[A-Za-z\\]*]", "");
