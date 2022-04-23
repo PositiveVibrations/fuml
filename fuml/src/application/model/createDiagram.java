@@ -34,16 +34,21 @@ public static ArrayList<String> variables(String fileName){
 						line = line.replaceAll("protected", "*");
 						
 						String[] words = line.split(" ");
-					
-						line = words[1] + " " +  words[3]+": " +words[2];
-						variables.add(line);
+						if(words.length >= 3) {
+							for (int i = 3; i < words.length; i++) {
+								words[2] = words[2] + " " + words[i];
+							}
+							line = words[0] + " " +  words[2]+": " +words[1];
+							variables.add(line);
+						}
+
 						}
 				}
-
-							
 				line = reader.readLine();
 			}
-			reader.close();
+
+		
+			
 
 		 
 			   } catch (IOException e) {                                   
@@ -54,7 +59,6 @@ public static ArrayList<String> variables(String fileName){
 		return variables;
 	}
 	
-
 
 
 //Methods Function
@@ -78,36 +82,27 @@ public static ArrayList<String> methods(String fileName){
 						line = line.replaceAll("throws IOException", "");
 						line = line.replaceAll("throws FileNotFoundException IOException","");
 						String[] words = line.split(" ");
-						if(words.length > 4) {
-							for (int i = 4; i < words.length; i++) {
-								words[3] = words[3] + " " + words[i];
+						if(words.length >= 3) {
+							for (int i = 3; i < words.length; i++) {
+								words[2] = words[2] + " " + words[i];
 							}
 						}
-						line=words[1] + " " + words[3] + ": " + words[2];
+						line = words[0] + " " +  words[2]+": " +words[1];
 						methods.add(line);
-						
 					}
 				}
-				
-				else {
-					
-				}
-				
 				line = reader.readLine();
-				
-				if(line == null) {
-					
-					break;
-				}
 			}
-			reader.close();
+
+		
+			
 
 		 
 			   } catch (IOException e) {                                   
 
-			  e.printStackTrace();                                    
-		 }
-		
+			  e.printStackTrace();
+				
+								 }									
 		return methods;
-	}
+}
 }
