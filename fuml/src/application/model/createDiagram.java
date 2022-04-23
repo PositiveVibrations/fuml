@@ -21,6 +21,7 @@ public static ArrayList<String> variables(String fileName){
 			while (line != null) {
 				//remove extra spaces between words
 				line = line.replaceAll("\\s+", " ");
+				line = line.replaceAll("^\\s+", "");
 				//if the line contain public private or protected
 				if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 					if(line.contains("(")) {
@@ -34,15 +35,18 @@ public static ArrayList<String> variables(String fileName){
 						line = line.replaceAll("protected", "*");
 						
 						String[] words = line.split(" ");
-						if(words.length >= 3) {
+						if(words.length > 2) {
 							for (int i = 3; i < words.length; i++) {
 								words[2] = words[2] + " " + words[i];
 							}
-							line = words[0] + " " +  words[2]+": " +words[1];
+							line = words[0] + " " + words[2]+": " + words[1];
 							variables.add(line);
 						}
-
+						else if(words.length==3) {
+						line = words[0] + " " + words[2]+": " + words[1] ;
+						variables.add(line);
 						}
+					}
 				}
 				line = reader.readLine();
 			}
@@ -72,6 +76,7 @@ public static ArrayList<String> methods(String fileName){
 			while (line != null) {
 				//remove extra spaces between words
 				line = line.replaceAll("\\s+", " ");
+				line = line.replaceAll("^\\s+", "");
 				//if the line contain public private or protected
 				if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 					if(line.contains("(")) {
@@ -84,10 +89,10 @@ public static ArrayList<String> methods(String fileName){
 						String[] words = line.split(" ");
 						if(words.length >= 3) {
 							for (int i = 3; i < words.length; i++) {
-								words[2] = words[2] + " " + words[i];
+								words[2] = words[2] + ": " + words[i];
 							}
 						}
-						line = words[0] + " " +  words[2]+": " +words[1];
+						line = words[0] + " " + words[2]+": " + words[1];
 						methods.add(line);
 					}
 				}
