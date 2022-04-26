@@ -10,10 +10,17 @@ import application.model.createDiagram;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -29,6 +36,10 @@ public class createDiagramController {
     private MenuBar menuBar;
     
     
+    @FXML
+    private TextField diagramName;
+    
+    
     //Displays Pop up of functions on application
     @FXML
     void aboutHelp(ActionEvent event) throws IOException{
@@ -39,26 +50,48 @@ public class createDiagramController {
         window.show();
     }
 
-
-
     @FXML
     //will pass to functions in model later
     void Generate(ActionEvent event) throws IOException{
-        ArrayList<String> methods = new ArrayList<String>();
-		ArrayList<String> variables = new ArrayList<String>();
-        ArrayList<String> fileList = new ArrayList<String>(); 
-        for(int i = 0; i < listedFile.getItems().size(); i++){
-              fileList.add(listedFile.getItems().get(i));
-            //this is the variables arrayList...set it to print for now, use it how you want.
-             variables = createDiagram.variables(listedFile.getItems().get(i));
-        	 for(int j = 0; j < variables.size(); j++) {
-				 System.out.println(variables.get(j));
-        	 }
-        	 //this is the methods arrayList...set it to print for now, use it how you want.
-        	 methods = createDiagram.methods(listedFile.getItems().get(i));
-        	 for(int j = 0; j < methods.size(); j++) {
-				 System.out.println(methods.get(j));
-        	 }
+
+        
+        String projectName = diagramName.getText();
+        
+        if(createDiagram.checkHistory(projectName))
+        {
+    		Alert error= new Alert(AlertType.ERROR);
+    		error.setTitle("Project:" + projectName+" Already Exists!");
+    		error.setHeaderText("Project:"+projectName+" Already Exists!");
+    		error.setContentText("ERROR: Cannot create what has been created");
+    		error.showAndWait();
+        }
+        else
+        {
+        	
+    		for(int i = 0; i < listedFile.getItems().size(); i++){
+    	        ArrayList<String> methods = new ArrayList<String>();
+    			ArrayList<String> variables = new ArrayList<String>();
+    	        ArrayList<String> fileList = new ArrayList<String>(); 
+    			fileList.add(listedFile.getItems().get(i));
+    			
+		        //this is the variables arrayList...set it to print for now, use it how you want.
+		        variables = createDiagram.variables(listedFile.getItems().get(i));
+
+		        //this is the methods arrayList...set it to print for now, use it how you want.
+		        methods = createDiagram.methods(listedFile.getItems().get(i));
+
+		        createDiagram.addDiagramsHistory(methods, variables, fileList, projectName);
+		        	
+    		}
+    		currentDiagramController currDiagram = new currentDiagramController();
+    		currDiagram.projectName = projectName;
+    		URL url = new File("src/application/view/currentDiagram.fxml").toURI().toURL();
+	        mainPane = FXMLLoader.load(url);
+	        Scene scene = new Scene(mainPane);// pane you are GOING TO show
+	        Stage window = (Stage) menuBar.getScene().getWindow();// pane you are ON
+	        window.setScene(scene);
+	        window.show();
+	        
         }
       }
 

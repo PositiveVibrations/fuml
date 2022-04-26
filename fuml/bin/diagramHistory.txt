@@ -1,0 +1,7 @@
+Project: banana
+{
+File: C:\Users\22apr\Downloads\Main.java
+Variables:
+Methods:
++ static void main(String[] args) 
+}

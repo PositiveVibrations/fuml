@@ -3,27 +3,20 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.viewDiagramController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: LIGHTSTEELBLUE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.currentDiagramController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="600.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" scaleY="2.0">
-         <image>
-            <Image url="@../images/background2.jpg" />
-         </image>
-      </ImageView>
-      <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0">
+      <MenuBar fx:id="menuBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="Return">
             <items>
-              <MenuItem mnemonicParsing="false" text="Home" />
+              <MenuItem mnemonicParsing="false" onAction="#returnHome" text="Home" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="Resources" />
+              <MenuItem mnemonicParsing="false" onAction="#aboutHelp" text="Resources" />
             </items>
           </Menu>
         </menus>

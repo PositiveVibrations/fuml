@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -23,20 +24,16 @@
                      </image>
                   </ImageView>
                   <Button layoutX="500.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="edit" textFill="#4e4e4e" />
-                  <Button layoutX="400.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="Delete" textFill="#4e4e4e" />
+                  <Button layoutX="400.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteDiagram" prefHeight="30.0" prefWidth="75.0" text="Delete" textFill="#4e4e4e" />
                   <Text fill="#4e4e4e" layoutX="100.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Diagrams">
                      <font>
                         <Font name="Bodoni MT" size="40.0" />
                      </font></Text>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="598.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="598.0" style="-fx-background-color: LIGHTSTEELBLUE;">
                <children>
-                  <ImageView fitHeight="500.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" scaleY="2.0">
-                     <image>
-                        <Image url="@../images/background2.jpg" />
-                     </image>
-                  </ImageView>
+                  <ChoiceBox fx:id="choiceBox" layoutX="149.0" layoutY="144.0" prefWidth="300.0" />
                </children>
             </AnchorPane>
         </items>

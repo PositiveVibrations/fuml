@@ -1,7 +1,10 @@
 package application.model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ public static ArrayList<String> variables(String fileName){
 				//remove extra spaces between words
 				line = line.replaceAll("\\s+", " ");
 				line = line.replaceAll("^\\s+", "");
+				line = line.replaceAll("$\\s+", "");
 				//if the line contain public private or protected
 				if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 					if(line.contains("(")) {
@@ -51,10 +55,6 @@ public static ArrayList<String> variables(String fileName){
 				line = reader.readLine();
 			}
 
-		
-			
-
-		 
 			   } catch (IOException e) {                                   
 
 			  e.printStackTrace();                                    
@@ -77,6 +77,7 @@ public static ArrayList<String> methods(String fileName){
 				//remove extra spaces between words
 				line = line.replaceAll("\\s+", " ");
 				line = line.replaceAll("^\\s+", "");
+				line = line.replaceAll("$\\s+", "");
 				//if the line contain public private or protected
 				if (line.contains("public") || line.contains("private") || line.contains("protected")) {
 					if(line.contains("(")) {
@@ -87,27 +88,94 @@ public static ArrayList<String> methods(String fileName){
 						line = line.replaceAll("throws IOException", "");
 						line = line.replaceAll("throws FileNotFoundException IOException","");
 						String[] words = line.split(" ");
-						if(words.length >= 3) {
+						if(words.length > 3) {
 							for (int i = 3; i < words.length; i++) {
 								words[2] = words[2] + ": " + words[i];
 							}
 						}
+						if(words.length==3) {
+						
 						line = words[0] + " " + words[2]+": " + words[1];
 						methods.add(line);
+						}
+						else {
+							line=line;
+							methods.add(line);
+						}
 					}
 				}
 				line = reader.readLine();
 			}
-
-		
 			
-
-		 
-			   } catch (IOException e) {                                   
+			} catch (IOException e) {                                   
 
 			  e.printStackTrace();
 				
-								 }									
+			}									
 		return methods;
-}
-}
+	}
+
+	/*checks diagramHistory if the project already exists
+	 * returns boolean file
+	 */
+	public static boolean checkHistory(String projectName) throws IOException{
+		boolean projectExists = false;
+				
+		BufferedReader reader = new BufferedReader(new FileReader("src/diagramHistory.txt"));
+		try {
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		       if(line.equals("Project: "+projectName))
+		       {
+		    	   projectExists = true;
+		       }
+		    }
+		    
+		} finally {
+		    reader.close();
+		}
+    	
+		
+		return projectExists;
+	}
+	
+	public static void addDiagramsHistory(ArrayList<String> methods,ArrayList<String> variables,ArrayList<String> fileList,String projectName){
+        
+		//begins with projectName followed by newline
+		try {
+			System.out.println(fileList);
+			BufferedWriter writer = new BufferedWriter(new FileWriter("src/diagramHistory.txt", true));
+			int i=0;
+			writer.write("Project: "+projectName+"\n");
+			for(i= 0; i < fileList.size(); i++)
+			{
+				
+				
+				writer.write("{\nFile: "+fileList.get(i)+"\n");
+				//print the array list starting with Variables
+				writer.write("Variables:\n");
+				for(int j = 0; j < variables.size(); j++) {
+					writer.write(variables.get(j)+"\n");
+				}
+				
+				//print array with methods
+				writer.write("Methods:\n");
+				for(int j = 0; j < methods.size(); j++) {
+					writer.write(methods.get(j)+"\n");
+				}
+				writer.write("}\n");
+			}
+			//end of protect is seen through /n/n
+			writer.write("");
+			
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	}
+
+

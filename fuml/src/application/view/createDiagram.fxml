@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,14 +30,9 @@
                      </font></Text>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: LIGHTSTEELBLUE;">
                <children>
-                  <ImageView fitHeight="406.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" scaleY="2.0">
-                     <image>
-                        <Image url="@../images/background2.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="226.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Generate" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 15;" text="Generate" textFill="#4e4e4e">
+                  <Button layoutX="226.0" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Generate" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 15;" text="Generate" textFill="#4e4e4e">
                      <font>
                         <Font name="Bodoni MT" size="15.0" />
                      </font>
@@ -47,6 +43,7 @@
                      </font>
                   </Button>
                   <ListView fx:id="listedFile" layoutX="71.0" layoutY="69.0" prefHeight="245.0" prefWidth="428.0" />
+                  <TextField fx:id="diagramName" layoutX="202.0" layoutY="347.0" promptText="fileName" />
                </children>
             </AnchorPane>
         </items>
