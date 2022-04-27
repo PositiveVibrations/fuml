@@ -15,4 +15,4 @@ Group Members:
 
 
 
-Known issues: We went for an ambitious and unique project that would require a full team effort of all 5 members. Due to that fact we did NOT have a full team, we didnt complete the full project. 
+Known issues: We went for an ambitious and unique project that would require a full team effort of all 5 members. Due to that fact we did NOT have a full team, we didnt complete the full project in the alloted time.
