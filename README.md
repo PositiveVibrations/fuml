@@ -6,8 +6,8 @@ Version 1.8 JDK, 1.8 JRE
 
 Group Name: Banana (Group 5)
 Group Members:
- Bianca Ortiz,
  Jeffrey Stapleton,
+ Bianca Ortiz,
  Jayda Johnson,
  William Choe (N/A),
  Ashley Domansi (N/A).
